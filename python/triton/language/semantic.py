@@ -38,12 +38,12 @@ class TritonSemantic(Generic[TensorTy]):
     def program_id(self, axis: int) -> TensorTy:
         if axis not in (0, 1, 2):
             raise ValueError(f"program_id axis must be 0, 1, or 2 but got {axis}")
-        return self.tensor(self.builder.create_get_program_id(axis), tl.int32)
+        return self.tensor(self.builder.create_get_program_id(axis), tl.uint64)
 
     def num_programs(self, axis: int) -> TensorTy:
         if axis not in (0, 1, 2):
             raise ValueError(f"num_programs axis must be 0, 1, or 2 but got {axis}")
-        return self.tensor(self.builder.create_get_num_programs(axis), tl.int32)
+        return self.tensor(self.builder.create_get_num_programs(axis), tl.uint64)
 
 # ===----------------------------------------------------------------------===//
 #                               Implicit Casting Utilities
